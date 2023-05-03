@@ -76,7 +76,7 @@ body {
 .remote {
     background-color: var(--color-one);
     padding: 1rem;
-    border-radius: .4rem;
+    border-radius: 0 0 .4rem .4rem;
 }
 
 .todo-app form {
