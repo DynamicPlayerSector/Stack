@@ -8,6 +8,8 @@
   
   ## Run
   
+  ![image](https://user-images.githubusercontent.com/65742767/235815586-1d73f999-5907-408e-a888-7820cb08ed2b.png)
+  
   Just run `py app.py` from the terminal in the repository folder (or click play in VS Code).
   The database file is already created in the /static/ folder.
   
