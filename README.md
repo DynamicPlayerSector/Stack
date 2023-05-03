@@ -9,3 +9,8 @@
   ## Run
   
   Just run `py app.py` from the terminal in the repository folder (or click play in VS Code).
+  The database file is already created in the /static/ folder.
+  
+  ## A note
+  
+  It was a fun project to build! I learned a lot from this.
