@@ -7,16 +7,14 @@ import os
 with app.app_context():
     databasePath = os.path.join(current_app.root_path, 'static', 'sqlite', 'database.sqlite')
 
-print(databasePath)
-
 def AddTask(name):
     connection = sqlite3.connect(databasePath, check_same_thread=False)
     cursor = connection.cursor()
     now = datetime.utcnow()
     isonow = now.isoformat("T")
-    order = f"INSERT INTO tasks (name, created_at) VALUES ('{name}', '{isonow}');"
+    order = "INSERT INTO tasks (name, created_at) VALUES (?, ?)"
 
-    cursor.execute(order)
+    cursor.execute(order, (name, isonow))
     connection.commit()
     connection.close()
 
@@ -35,11 +33,11 @@ def GetTasks():
 
 def TickTask(id, value):
     connection = sqlite3.connect(databasePath, check_same_thread=False)
-    order = f"UPDATE tasks SET 'check' = {value} WHERE id = {id}"
+    order = "UPDATE tasks SET 'check' = ? WHERE id = ?"
 
 
     cursor = connection.cursor()
-    cursor.execute(order)
+    cursor.execute(order, (value, id))
     connection.commit()
 
     connection.close()
@@ -47,11 +45,11 @@ def TickTask(id, value):
 
 def Archive(id):
     connection = sqlite3.connect(databasePath, check_same_thread=False)
-    order = f"UPDATE tasks SET 'archive' = 1 WHERE id = {id}"
+    order = f"UPDATE tasks SET 'archive' = 1 WHERE id = ?"
 
 
     cursor = connection.cursor()
-    cursor.execute(order)
+    cursor.execute(order, (id,))
     connection.commit()
 
     connection.close()

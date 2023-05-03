@@ -7,6 +7,7 @@ current_directory = os.path.dirname(current_file)
 os.chdir(current_directory)
 
 PORT = 9001
+DEBUG_MODE = False
 
 app = Flask(__name__)
 app.config['SERVER_NAME'] = f'localhost:{PORT}' # replace with your hostname and port number
@@ -46,7 +47,7 @@ def index_archive():
     return "Success"
 
 if __name__ == '__main__':
-    app.run(port = 9001)
+    app.run(debug = DEBUG_MODE, port = 9001)
 
 
 
