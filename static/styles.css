@@ -1,0 +1,122 @@
+html {
+
+}
+
+:root {
+    /*--color-one: black;
+    --color-two: darkslateblue;*/
+    --color-one: #2D033B;
+    --color-two: #03001C;
+}
+
+
+body {
+    font-family: "Motiva Sans", serif;
+    height: 100vh;
+    background-color: white;
+}
+
+.container {
+    /* Flex */
+    display: flex;
+    justify-content: center;
+    /**/
+    height: 100vh;
+    background-color: var(--color-two);
+}
+
+.todo-app {
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+    /**/
+    overflow: hidden;
+    margin: auto;
+    /**/
+    background-color: transparent;
+    border-radius: .4rem;
+    padding: 0;
+    width: 25rem;
+}
+
+#todo-list {
+    background: linear-gradient(to bottom,
+    var(--color-one) 0,   var(--color-one) 10%,
+    var(--color-two) 95%, var(--color-two) 0
+    ) 100% 50% / 100% 100% repeat-x;
+    /*-webkit-mask: var(--mask);
+    mask: var(--mask);*/
+
+    height: 25rem;
+    overflow-y: scroll;
+}
+
+#todo-list::-webkit-scrollbar {
+    width: 8px; /* set scrollbar width */
+}
+
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: white; /* set thumb color */
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+    background-color: transparent;
+}
+
+#todo-list li {
+    margin: 1rem;
+    line-height: 1.5rem;
+    border-radius: .4rem;
+    background-color: white;
+    padding: .7rem;
+}
+
+.remote {
+    background-color: var(--color-one);
+    padding: 1rem;
+    border-radius: .4rem;
+}
+
+.todo-app form {
+    display: flex;
+}
+
+.todo-app input[type="text"] {
+    /* Flex */
+    flex-grow: 1;
+    /**/
+    font-size: inherit;
+    border: none;
+    padding: .7rem;
+    background-color: white;
+    border-radius: .4rem;
+}
+
+.todo-app input:focus {
+    outline: none;
+}
+
+.todo-app input[type="submit"] {
+    /* Flex */
+    /**/
+    margin-left: 1rem;
+    font-size: inherit;
+    border: none;
+    padding: .7rem;
+    background-color: white;
+    border-radius: .4rem;
+}
+
+.image {
+    height: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.image:hover {
+    cursor: pointer;
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href = charset="UTF-8">
+    <title>Todo app</title>
+    <link href = "{{ url_for('static', filename='reset.css') }}" rel = "stylesheet"/>
+    <link href = "{{ url_for('static', filename='styles.css') }}" rel = "stylesheet"/>
+    <script src="{{ url_for('static', filename='js/action.js') }}"></script>
+    <style>
+        @font-face {
+            font-family: "Motiva Sans";
+            src: url('{{ url_for('static', filename='fonts/Motiva Sans/MotivaSansRegular.woff.ttf') }}');
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <section>
+                <ul id="todo-list">
+                    {% for row in tasks_dictionary[-1::-1] %}
+                    <p>
+                        {% if (row['archive'] == 1) %}
+                        {% else %}
+                        <li id="{{row['id']}}">
+                            <input id="{{row['id']}}-checkbox" type="checkbox" onclick="tick(this)" {% if (row['check'] == 1) %} checked {% else %}{% endif %}/>
+                            <label for="{{row['id']}}-checkbox">{{ row['name'] }}</label>
+                            <!-- <span style="font-size: 12px; color: grey;">{{ row['created_at'] }}</span> -->
+                            <img onclick="archive(this)" src="{{ url_for('static', filename='images/box-archive-solid.svg') }}" class="image"/>
+                        </li>
+                        {% endif %}
+                    </p>
+                    {% endfor %}
+                </ul>
+            </section>
+            <div class="remote">
+                <form method="POST" action="/">
+                    <input type="text" id="input" name="input" placeholder="What needs to be done?" autocomplete="off">
+                    <input type="submit" name="action" value="Add task"></input>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
