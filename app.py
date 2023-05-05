@@ -1,5 +1,6 @@
 import modules.functions
 import os
+import sys
 from flask import Flask, render_template, request, redirect, url_for
 
 current_file = os.path.abspath(__file__)
@@ -9,8 +10,15 @@ os.chdir(current_directory)
 PORT = 9001
 DEBUG_MODE = False
 
-app = Flask(__name__)
-app.config['SERVER_NAME'] = f'localhost:{PORT}' # replace with your hostname and port number
+base_dir = '.'
+if hasattr(sys, '_MEIPASS'):
+    base_dir = os.path.join(sys._MEIPASS)
+
+app = Flask(__name__,
+            static_folder=os.path.join(base_dir, 'static'),
+            template_folder=os.path.join(base_dir, 'templates'))
+
+# app.config['SERVER_NAME'] = f'localhost:{PORT}' # replace with your hostname and port number
 app.config['APPLICATION_ROOT'] = '/' # replace with your root URL
 app.config['PREFERRED_URL_SCHEME'] = 'https' # replace with your preferred URL scheme
 app.app_context().push()
@@ -47,7 +55,7 @@ def index_archive():
     return "Success"
 
 if __name__ == '__main__':
-    app.run(debug = DEBUG_MODE, port = 9001)
+    app.run(host="0.0.0.0", debug = DEBUG_MODE, port = 9901)
 
 
 

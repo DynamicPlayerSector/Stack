@@ -1,5 +1,7 @@
 html {
-
+    min-height: -moz-available;
+    min-height: -webkit-fill-available;
+    min-height: fill-available;
 }
 
 :root {
@@ -7,13 +9,14 @@ html {
     --color-two: darkslateblue;*/
     --color-one: #2D033B;
     --color-two: #03001C;
+    --doc-height: 100%;
 }
 
 
 body {
     font-family: "Motiva Sans", serif;
-    height: 100vh;
     background-color: white;
+    height: 100vh;
 }
 
 .container {
@@ -21,7 +24,7 @@ body {
     display: flex;
     justify-content: center;
     /**/
-    height: 100vh;
+    height: 100%;
     background-color: var(--color-two);
 }
 
@@ -38,6 +41,7 @@ body {
     padding: 0;
     width: 25rem;
 }
+  
 
 #todo-list {
     background: linear-gradient(to bottom,
@@ -118,5 +122,6 @@ body {
 
 .image:hover {
     cursor: pointer;
+    filter: invert(51%) sepia(43%) saturate(172%) hue-rotate(169deg) brightness(88%) contrast(88%);
 }
 
